@@ -1,23 +1,100 @@
 @import "./base.css";
 
+body {
+  background: #222;
+  min-height: 100svh;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://images.unsplash.com/photo-1716690449483-598c9f7fe0d0?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTk5MTAyMzN8&ixlib=rb-4.0.3&q=85");
+  background-position: center;
+  background-size: cover;
+}
+
+
+
+
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 5rem;
   font-weight: normal;
 }
 
 a,
 .green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+
+    --_border: 2px;
+    --_border-clr: rgba(255,255,255,.9);
+    --_corner-offset: 12px;
+    --_corner-offset-inner: calc(var(--_corner-offset) - var(--_border)); /* slightly less than outer border */
+    --_corner-gradient-start: 0px;
+    --_corner-gradient-end: 8px; 
+    --_corner-gradient-end-inner: calc(var(--_corner-gradient-end) - var(--_border)); /* slightly less than outer border */
+    --_border-inner-offset: 3px;
+  
+    background: #444;
+    color: #fff;
+    border: none;
+    padding: .75em 1.5em;
+    width: fit-content;
+    font-size: clamp(1rem, 2.5vw, 1.7rem);
+    font-weight: 300;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    border: var(--_border) solid var(--_border-clr);
+    clip-path: polygon(
+      var(--_corner-offset) 0,
+      calc(100% - var(--_corner-offset)) 0,
+      100% var(--_corner-offset),
+      100% calc(100% - var(--_corner-offset)),
+      calc(100% - var(--_corner-offset)) 100%,
+      var(--_corner-offset) 100%,
+      0 calc(100% - var(--_corner-offset)),
+      0 var(--_corner-offset)
+    );
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0) var(--_corner-gradient-start),
+        var(--_border-clr) var(--_corner-gradient-end),
+        rgba(0, 0, 0, 0) var(--_corner-gradient-end)
+      ),
+      linear-gradient(
+        225deg,
+        rgba(0, 0, 0, 0) var(--_corner-gradient-start),
+        var(--_border-clr) var(--_corner-gradient-end),
+        rgba(0, 0, 0, 0) var(--_corner-gradient-end)
+      ),
+      linear-gradient(
+        315deg,
+        rgba(0, 0, 0, 0) var(--_corner-gradient-start),
+        var(--_border-clr) var(--_corner-gradient-end),
+        rgba(0, 0, 0, 0) var(--_corner-gradient-end)
+      ),
+      linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0) var(--_corner-gradient-start),
+        var(--_border-clr) var(--_corner-gradient-end),
+        rgba(0, 0, 0, 0) var(--_corner-gradient-end)
+      );
+    background-position: top left, top right, bottom right, bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    transition: color 300ms ease-in-out;
+    backdrop-filter: blur(2px);
+    position: relative;
+  
 }
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: hsla(208, 44%, 21%, 0.831);
   }
 }
 
@@ -62,7 +139,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  color:white;
 }
 
 nav a.router-link-exact-active:hover {
